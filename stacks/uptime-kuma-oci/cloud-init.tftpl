@@ -1,0 +1,37 @@
+#cloud-config
+package_update: true
+package_upgrade: false
+packages:
+  - docker.io
+
+write_files:
+  - path: /usr/local/bin/setup-uptime-kuma.sh
+    permissions: '0755'
+    owner: root:root
+    content: |
+      #!/usr/bin/env bash
+      set -euo pipefail
+
+      STACK_NAME='${stack_name}'
+      WEB_PORT='${web_port}'
+      UPTIME_KUMA_VERSION='${uptime_kuma_version}'
+      TIMEZONE='${timezone}'
+
+      timedatectl set-timezone "$TIMEZONE" || true
+      systemctl enable --now docker
+
+      docker rm -f uptime-kuma >/dev/null 2>&1 || true
+      docker pull "louislam/uptime-kuma:$UPTIME_KUMA_VERSION"
+
+      docker run -d \
+        --name uptime-kuma \
+        --restart unless-stopped \
+        -p "$WEB_PORT:3001" \
+        -e TZ="$TIMEZONE" \
+        -v uptime-kuma-data:/app/data \
+        "louislam/uptime-kuma:$UPTIME_KUMA_VERSION"
+
+      echo "$STACK_NAME ready on port $WEB_PORT" > /etc/motd
+
+runcmd:
+  - /usr/local/bin/setup-uptime-kuma.sh > /var/log/uptime-kuma-setup.log 2>&1

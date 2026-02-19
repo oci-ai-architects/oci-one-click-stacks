@@ -11,7 +11,7 @@ projects:
     type: oss-fork-or-wrapper
     complexity: low
     value: broad
-    status: planned
+    status: shipped
 
   - id: umami-oci
     source: umami-software/umami
@@ -32,7 +32,7 @@ projects:
     type: fork-and-refactor
     complexity: medium
     value: very-high
-    status: in-discovery
+    status: shipped
 
   - id: flowise-oci
     source: FlowiseAI/Flowise

@@ -1,26 +1,30 @@
-# openwebui-oci (Planned)
+# openwebui-oci
 
-## Recommendation
+Deploy upstream Open WebUI on OCI with one click, using OCI OpenAI-compatible
+endpoints and optional OCI accelerator assets from
+`oci-ai-architects/oci_open-webui`.
 
-Yes, fork `dariomanda/oci_open-webui`, but treat it as a migration source, not final product shape.
+## Deploy to OCI
 
-Why:
-- It already proves OCI GenAI integration and runtime flow.
-- It has OpenTofu + Ansible assets we can reuse.
-- It is not currently optimized for OCI Deploy-button release packaging.
+[![Deploy to Oracle Cloud](https://oci-resourcemanager-plugin.plugins.oci.oraclecloud.com/latest/deploy-to-oracle-cloud.svg)](https://cloud.oracle.com/resourcemanager/stacks/create?zipUrl=https://github.com/oci-ai-architects/oci-one-click-stacks/releases/download/v0.2.0/openwebui-oci-stack-v0.2.0.zip)
 
-## Target Deliverable
+## Runtime Strategy
 
-A clean one-click OCI stack with:
-- `schema.yaml`
-- Terraform/OpenTofu entrypoint
-- Cloud-init-first quick deploy mode
-- Optional hardened mode (private subnet + Bastion)
-- Release ZIP artifact for `cloud.oracle.com/resourcemanager/stacks/create?zipUrl=...`
+- Runtime is pinned to upstream Open WebUI image tag `v0.8.3`.
+- OCI accelerator assets can be pulled from
+  `https://github.com/oci-ai-architects/oci_open-webui`.
+- Optional IAM resources can be created for instance-principal based OCI GenAI
+  access patterns.
 
-## Build Plan
+## Outputs
 
-1. Extract the minimal infra footprint from source repo.
-2. Remove required local post-steps where possible.
-3. Move runtime config to stack variables and cloud-init.
-4. Add packaging + validation scripts from this monorepo standard.
+- `public_ip`
+- `web_url`
+- `ssh_command`
+
+## Validate and package
+
+```bash
+../../scripts/validate-stack.sh stacks/openwebui-oci
+../../scripts/package-stack.sh stacks/openwebui-oci /tmp/openwebui-oci.zip
+```

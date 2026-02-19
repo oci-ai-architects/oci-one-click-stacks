@@ -1,0 +1,146 @@
+---
+title: Uptime Kuma on OCI
+description: >-
+  Deploy a single-VM Uptime Kuma instance on OCI with Docker and persistent
+  container data.
+schemaVersion: 1.1.0
+version: "20260219"
+locale: en
+
+variableGroups:
+  - title: Hidden
+    visible: false
+    variables:
+      - tenancy_ocid
+      - region
+
+  - title: Core
+    variables:
+      - compartment_ocid
+      - stack_prefix
+      - ssh_public_key
+      - availability_domain_number
+      - image_ocid
+      - instance_shape
+      - instance_ocpus
+      - instance_memory_in_gbs
+      - boot_volume_size_gbs
+
+  - title: Network
+    variables:
+      - vcn_cidr_block
+      - public_subnet_cidr_block
+      - allow_ssh_cidr
+      - allow_web_cidr
+      - web_port
+
+  - title: Runtime
+    variables:
+      - uptime_kuma_version
+      - timezone
+
+variables:
+  tenancy_ocid:
+    type: string
+    required: true
+    visible: false
+
+  region:
+    type: oci:identity:region:name
+    required: true
+    visible: false
+
+  compartment_ocid:
+    type: oci:identity:compartment:id
+    required: true
+    title: Deployment Compartment
+    default: compartment_ocid
+
+  stack_prefix:
+    type: string
+    required: true
+    default: uptimekuma
+    title: Resource Prefix
+
+  ssh_public_key:
+    type: oci:core:ssh:publickey
+    required: true
+    title: SSH Public Key
+
+  availability_domain_number:
+    type: integer
+    required: true
+    default: 1
+    title: Availability Domain Number
+
+  image_ocid:
+    type: string
+    required: false
+    default: ""
+    title: Custom Image OCID (Optional)
+
+  instance_shape:
+    type: string
+    required: true
+    default: VM.Standard.E4.Flex
+    title: Compute Shape
+
+  instance_ocpus:
+    type: integer
+    required: true
+    default: 1
+    title: Flex OCPUs
+
+  instance_memory_in_gbs:
+    type: integer
+    required: true
+    default: 6
+    title: Flex Memory (GB)
+
+  boot_volume_size_gbs:
+    type: integer
+    required: true
+    default: 50
+    title: Boot Volume Size (GB)
+
+  vcn_cidr_block:
+    type: string
+    required: true
+    default: 10.45.0.0/16
+    title: VCN CIDR
+
+  public_subnet_cidr_block:
+    type: string
+    required: true
+    default: 10.45.0.0/24
+    title: Public Subnet CIDR
+
+  allow_ssh_cidr:
+    type: string
+    required: true
+    default: 0.0.0.0/0
+    title: Allowed SSH CIDR
+
+  allow_web_cidr:
+    type: string
+    required: true
+    default: 0.0.0.0/0
+    title: Allowed Web CIDR
+
+  web_port:
+    type: integer
+    required: true
+    default: 3001
+    title: Uptime Kuma Port
+
+  uptime_kuma_version:
+    type: string
+    required: true
+    default: "1"
+    title: Uptime Kuma Image Tag
+
+  timezone:
+    type: string
+    required: true
+    default: UTC
+    title: Timezone

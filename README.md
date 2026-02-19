@@ -26,13 +26,14 @@ Goal: start with ultra-simple stacks that deploy in minutes, then grow into high
 
 Full prioritization is in `catalog/projects.yaml` and `ROADMAP.md`.
 
-## Starter Stack
+## Live Deploy Buttons
 
-First working stack is `stacks/hello-oci-vm`.
-
-### Deploy to OCI
-
+- `hello-oci-vm`:
 [![Deploy to Oracle Cloud](https://oci-resourcemanager-plugin.plugins.oci.oraclecloud.com/latest/deploy-to-oracle-cloud.svg)](https://cloud.oracle.com/resourcemanager/stacks/create?zipUrl=https://github.com/oci-ai-architects/oci-one-click-stacks/releases/download/v0.1.0/hello-oci-vm-stack-v0.1.0.zip)
+- `uptime-kuma-oci`:
+[![Deploy to Oracle Cloud](https://oci-resourcemanager-plugin.plugins.oci.oraclecloud.com/latest/deploy-to-oracle-cloud.svg)](https://cloud.oracle.com/resourcemanager/stacks/create?zipUrl=https://github.com/oci-ai-architects/oci-one-click-stacks/releases/download/v0.2.0/uptime-kuma-oci-stack-v0.2.0.zip)
+- `openwebui-oci`:
+[![Deploy to Oracle Cloud](https://oci-resourcemanager-plugin.plugins.oci.oraclecloud.com/latest/deploy-to-oracle-cloud.svg)](https://cloud.oracle.com/resourcemanager/stacks/create?zipUrl=https://github.com/oci-ai-architects/oci-one-click-stacks/releases/download/v0.2.0/openwebui-oci-stack-v0.2.0.zip)
 
 ### Validate locally
 
@@ -46,11 +47,14 @@ First working stack is `stacks/hello-oci-vm`.
 ./scripts/package-stack.sh stacks/hello-oci-vm /tmp/hello-oci-vm-stack.zip
 ```
 
-## OpenWebUI Track
+## OpenWebUI Strategy
 
-Decision and build plan: `stacks/openwebui-oci/README.md`.
-
-Short version: forking `dariomanda/oci_open-webui` is viable, but we should refactor to a Resource-Manager-first structure (single stack entrypoint, schema, packaging, and OCI-button release assets).
+- Accelerator fork is now in org:
+  `https://github.com/oci-ai-architects/oci_open-webui`
+- Runtime follows upstream Open WebUI release tags
+  (`open-webui/open-webui`), currently pinned to `v0.8.3`.
+- OCI integration assets are preserved via optional accelerator cloning and
+  IAM policy bootstrap in `stacks/openwebui-oci`.
 
 ## Repo Structure
 
@@ -62,6 +66,7 @@ scripts/
   validate-stack.sh
 stacks/
   hello-oci-vm/
+  uptime-kuma-oci/
   openwebui-oci/
 ROADMAP.md
 ```

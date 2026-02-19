@@ -1,0 +1,71 @@
+#cloud-config
+package_update: true
+package_upgrade: false
+packages:
+  - docker.io
+  - git
+  - ca-certificates
+
+write_files:
+  - path: /usr/local/bin/setup-openwebui.sh
+    permissions: '0755'
+    owner: root:root
+    content: |
+      #!/usr/bin/env bash
+      set -euo pipefail
+
+      STACK_NAME='${stack_name}'
+      WEB_PORT='${web_port}'
+      OPEN_WEBUI_VERSION='${open_webui_version}'
+      ENABLE_ACCEL='${enable_oci_accelerator}'
+      ACCEL_REPO='${accelerator_repo_url}'
+      ACCEL_REF='${accelerator_ref}'
+
+      OPENAI_API_BASE_URL="$(printf '%s' '${openai_api_base_url_b64}' | base64 -d)"
+      OPENAI_API_KEY="$(printf '%s' '${openai_api_key_b64}' | base64 -d)"
+      DEFAULT_MODELS="$(printf '%s' '${default_models_b64}' | base64 -d)"
+      WEBUI_SECRET_KEY="$(printf '%s' '${webui_secret_key_b64}' | base64 -d)"
+      OCI_COMPARTMENT_OCID="$(printf '%s' '${oci_compartment_ocid_b64}' | base64 -d)"
+      OCI_REGION_VALUE="$(printf '%s' '${oci_region_b64}' | base64 -d)"
+
+      if [ -z "$WEBUI_SECRET_KEY" ]; then
+        WEBUI_SECRET_KEY="$(openssl rand -hex 32)"
+      fi
+
+      systemctl enable --now docker
+      mkdir -p /opt/openwebui
+
+      if [ "$ENABLE_ACCEL" = "true" ]; then
+        rm -rf /opt/openwebui/accelerator
+        git clone --depth 1 --branch "$ACCEL_REF" "$ACCEL_REPO" /opt/openwebui/accelerator || true
+        if [ -f /opt/openwebui/accelerator/models.yaml ]; then
+          cp /opt/openwebui/accelerator/models.yaml /opt/openwebui/models.yaml
+        fi
+      fi
+
+      cat > /opt/openwebui/open-webui.env <<ENV
+      OPENAI_API_BASE_URL=$OPENAI_API_BASE_URL
+      OPENAI_API_KEY=$OPENAI_API_KEY
+      OPENAI_API_BASE_URLS=$OPENAI_API_BASE_URL
+      OPENAI_API_KEYS=$OPENAI_API_KEY
+      DEFAULT_MODELS=$DEFAULT_MODELS
+      WEBUI_SECRET_KEY=$WEBUI_SECRET_KEY
+      OCI_COMPARTMENT_ID=$OCI_COMPARTMENT_OCID
+      OCI_REGION=$OCI_REGION_VALUE
+      ENV
+
+      docker rm -f open-webui >/dev/null 2>&1 || true
+      docker pull "ghcr.io/open-webui/open-webui:$OPEN_WEBUI_VERSION"
+
+      docker run -d \
+        --name open-webui \
+        --restart unless-stopped \
+        -p "$WEB_PORT:8080" \
+        --env-file /opt/openwebui/open-webui.env \
+        -v open-webui-data:/app/backend/data \
+        "ghcr.io/open-webui/open-webui:$OPEN_WEBUI_VERSION"
+
+      echo "$STACK_NAME ready on port $WEB_PORT" > /etc/motd
+
+runcmd:
+  - /usr/local/bin/setup-openwebui.sh > /var/log/openwebui-setup.log 2>&1

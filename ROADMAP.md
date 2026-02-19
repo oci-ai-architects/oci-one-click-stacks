@@ -3,7 +3,7 @@
 ## Phase 1 (Ship Fast)
 
 1. `hello-oci-vm` (done)
-2. `uptime-kuma-oci`
+2. `uptime-kuma-oci` (done)
 3. `umami-oci`
 
 Exit criteria:
@@ -13,7 +13,7 @@ Exit criteria:
 ## Phase 2 (High Utility)
 
 1. `n8n-oci`
-2. `openwebui-oci`
+2. `openwebui-oci` (done)
 3. `flowise-oci`
 
 Exit criteria:
@@ -37,8 +37,7 @@ Exit criteria:
 `dariomanda/oci_open-webui` is a good accelerator, but not yet one-click in OCI Resource Manager form.
 
 Required adaptation:
-- Move from multi-step local OpenTofu+Ansible flow to RM stack ZIP flow.
-- Add OCI `schema.yaml` and release packaging script.
-- Offer two modes:
-  - quick mode: public VM + OpenWebUI
-  - secure mode: private VM + Bastion + tighter security lists
+- Done: created org fork at `oci-ai-architects/oci_open-webui`.
+- Done: added RM-first stack packaging in `stacks/openwebui-oci`.
+- Done: pinned runtime to upstream Open WebUI release tag (`v0.8.3`).
+- Next: add secure mode (private subnet + Bastion) and full gateway path.
