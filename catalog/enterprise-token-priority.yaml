@@ -1,0 +1,147 @@
+---
+projects:
+  - id: dify-oci
+    source: langgenius/dify
+    token_intensity: very-high
+    deployment_profile: vm-plus-compose
+    primary_use_cases:
+      - Enterprise AI workflow automation
+      - Cross-functional agent apps
+      - Internal copilots at scale
+    why_token_use_is_high: >-
+      Workflow graphs expand each business request into multiple model calls,
+      often with tool retries and high background job volume.
+    status: planned
+
+  - id: n8n-oci
+    source: n8n-io/n8n
+    token_intensity: very-high
+    deployment_profile: vm-plus-compose
+    primary_use_cases:
+      - AI automation for business operations
+      - Scheduled content and reporting agents
+      - API-driven process orchestration
+    why_token_use_is_high: >-
+      Continuous triggers and scheduled workflows create ongoing inference
+      usage beyond user-initiated chat sessions.
+    status: planned
+
+  - id: openwebui-oci
+    source: open-webui/open-webui
+    token_intensity: high
+    deployment_profile: single-vm
+    primary_use_cases:
+      - Enterprise AI chat portal
+      - Team-level assistant access
+    why_token_use_is_high: >-
+      Broad workforce adoption and frequent daily interactions sustain large
+      aggregate token volumes.
+    status: shipped
+
+  - id: onyx-oci
+    source: onyx-dot-app/onyx
+    token_intensity: very-high
+    deployment_profile: vm-plus-compose
+    primary_use_cases:
+      - Internal knowledge assistant
+      - Search + answer over enterprise systems
+    why_token_use_is_high: >-
+      RAG over large internal corpora with many concurrent users drives
+      high-context token consumption.
+    status: planned
+
+  - id: ragflow-oci
+    source: infiniflow/ragflow
+    token_intensity: very-high
+    deployment_profile: vm-plus-compose
+    primary_use_cases:
+      - Deep document understanding
+      - Policy, legal, and compliance copilots
+    why_token_use_is_high: >-
+      Large-document ingestion and answer generation consume long contexts and
+      repeated retrieval/generation cycles.
+    status: planned
+
+  - id: anything-llm-oci
+    source: Mintplex-Labs/anything-llm
+    token_intensity: high
+    deployment_profile: single-vm
+    primary_use_cases:
+      - Team workspaces with RAG and agents
+      - Cross-department knowledge copilots
+    why_token_use_is_high: >-
+      Workspace-centric usage increases repeated, retrieval-augmented dialogue
+      across multiple teams.
+    status: planned
+
+  - id: openhands-oci
+    source: OpenHands/OpenHands
+    token_intensity: very-high
+    deployment_profile: vm-plus-compose
+    primary_use_cases:
+      - Autonomous code implementation
+      - Engineering copilot loops
+    why_token_use_is_high: >-
+      Iterative code/test/fix cycles and long code contexts produce heavy
+      multi-turn token demand per task.
+    status: planned
+
+  - id: langgraph-platform-oci
+    source: langchain-ai/langgraph
+    token_intensity: high
+    deployment_profile: vm-plus-services
+    primary_use_cases:
+      - Stateful multi-agent orchestrations
+      - Human-in-the-loop business process agents
+    why_token_use_is_high: >-
+      Graph execution patterns multiply per-request model calls and retries,
+      especially under production orchestration loads.
+    status: planned
+
+  - id: chatwoot-ai-oci
+    source: chatwoot/chatwoot
+    token_intensity: very-high
+    deployment_profile: vm-plus-compose
+    primary_use_cases:
+      - AI-powered support desks
+      - Agent-assist for customer conversations
+    why_token_use_is_high: >-
+      High inbound ticket and chat volume leads to sustained production
+      inference traffic throughout business hours and after-hours automation.
+    status: planned
+
+  - id: letta-oci
+    source: letta-ai/letta
+    token_intensity: high
+    deployment_profile: vm-plus-services
+    primary_use_cases:
+      - Stateful memory agents
+      - Long-running operations assistants
+    why_token_use_is_high: >-
+      Persistent agent threads and memory updates add additional background
+      token usage on top of user interactions.
+    status: planned
+
+  - id: langfuse-oci
+    source: langfuse/langfuse
+    token_intensity: medium-high
+    deployment_profile: vm-plus-services
+    primary_use_cases:
+      - LLM observability and QA
+      - Prompt regression and eval automation
+    why_token_use_is_high: >-
+      Evaluation and regression pipelines intentionally run repeated model calls
+      to ensure quality and reliability.
+    status: planned
+
+  - id: litellm-gateway-oci
+    source: BerriAI/litellm
+    token_intensity: medium
+    deployment_profile: gateway
+    primary_use_cases:
+      - Central model routing and governance
+      - Cost controls, quotas, and policy management
+    why_token_use_is_high: >-
+      Gateway standardization accelerates enterprise adoption and indirectly
+      increases total token usage across teams.
+    status: planned

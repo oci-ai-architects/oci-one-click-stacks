@@ -26,6 +26,24 @@ Goal: start with ultra-simple stacks that deploy in minutes, then grow into high
 
 Full prioritization is in `catalog/projects.yaml` and `ROADMAP.md`.
 
+## Enterprise Token Demand Lens
+
+Extended list and rationale are now published in:
+
+- `docs/enterprise-token-use.md`
+- `catalog/enterprise-token-priority.yaml`
+
+Top additional high-potential stacks for enterprise token growth:
+
+| Candidate | Source | Token Intensity | Why It Drives Token Use |
+|---|---|---|---|
+| `dify-oci` | `langgenius/dify` | Very high | Multi-step agent workflows turn one task into many model calls. |
+| `onyx-oci` | `onyx-dot-app/onyx` | Very high | Org-wide RAG over enterprise data creates high-context, high-concurrency traffic. |
+| `ragflow-oci` | `infiniflow/ragflow` | Very high | Deep document understanding pipelines consume long contexts repeatedly. |
+| `chatwoot-ai-oci` | `chatwoot/chatwoot` | Very high | Support ticket/chat volumes create sustained production inference demand. |
+| `openhands-oci` | `OpenHands/OpenHands` | Very high | Autonomous code loops are token-intensive per task and per iteration. |
+| `anything-llm-oci` | `Mintplex-Labs/anything-llm` | High | Team workspace adoption scales concurrent RAG + agent sessions. |
+
 ## Live Deploy Buttons
 
 - `hello-oci-vm`:

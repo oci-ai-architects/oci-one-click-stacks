@@ -32,6 +32,19 @@ Exit criteria:
 - Observability baseline: logging/monitoring hooks.
 - Upgrade/migration docs between stack versions.
 
+## Phase 4 (Enterprise Token Growth)
+
+1. `dify-oci`
+2. `onyx-oci`
+3. `ragflow-oci`
+4. `chatwoot-ai-oci`
+5. `openhands-oci`
+
+Exit criteria:
+- Each stack includes token-governance defaults (model routing, quotas, logs).
+- One-click deployment ships with both quick mode and secure mode.
+- Workload playbooks clearly map use case to expected token profile.
+
 ## OpenWebUI Decision
 
 `dariomanda/oci_open-webui` is a good accelerator, but not yet one-click in OCI Resource Manager form.

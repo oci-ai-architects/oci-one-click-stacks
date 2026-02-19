@@ -1,3 +1,4 @@
+---
 projects:
   - id: hello-oci-vm
     source: internal
@@ -53,4 +54,67 @@ projects:
     type: integration
     complexity: high
     value: strategic
+    status: planned
+
+  - id: dify-oci
+    source: langgenius/dify
+    type: oss-fork-or-wrapper
+    complexity: medium-high
+    value: very-high
+    status: planned
+
+  - id: onyx-oci
+    source: onyx-dot-app/onyx
+    type: oss-fork-or-wrapper
+    complexity: medium-high
+    value: very-high
+    status: planned
+
+  - id: ragflow-oci
+    source: infiniflow/ragflow
+    type: oss-fork-or-wrapper
+    complexity: medium-high
+    value: very-high
+    status: planned
+
+  - id: anything-llm-oci
+    source: Mintplex-Labs/anything-llm
+    type: oss-fork-or-wrapper
+    complexity: medium
+    value: high
+    status: planned
+
+  - id: chatwoot-ai-oci
+    source: chatwoot/chatwoot
+    type: oss-fork-or-wrapper
+    complexity: medium-high
+    value: very-high
+    status: planned
+
+  - id: openhands-oci
+    source: OpenHands/OpenHands
+    type: oss-fork-or-wrapper
+    complexity: high
+    value: very-high
+    status: planned
+
+  - id: langgraph-platform-oci
+    source: langchain-ai/langgraph
+    type: platform
+    complexity: high
+    value: high
+    status: planned
+
+  - id: letta-oci
+    source: letta-ai/letta
+    type: oss-fork-or-wrapper
+    complexity: medium-high
+    value: high
+    status: planned
+
+  - id: litellm-gateway-oci
+    source: BerriAI/litellm
+    type: gateway
+    complexity: medium
+    value: high
     status: planned
