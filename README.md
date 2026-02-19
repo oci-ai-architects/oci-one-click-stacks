@@ -32,6 +32,8 @@ Extended list and rationale are now published in:
 
 - `docs/enterprise-token-use.md`
 - `catalog/enterprise-token-priority.yaml`
+- `docs/enterprise-token-bom.md`
+- `catalog/enterprise-token-bom.yaml`
 
 Top additional high-potential stacks for enterprise token growth:
 

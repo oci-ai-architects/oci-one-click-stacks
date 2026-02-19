@@ -1,0 +1,254 @@
+---
+ranked_stacks:
+  - rank: 1
+    id: dify-oci
+    source: langgenius/dify
+    token_potential: 10
+    deploy_effort: 6
+    one_click_pattern: vm-plus-compose
+    bom:
+      oci_required:
+        - vcn
+        - public_subnet
+        - internet_gateway
+        - security_list
+        - compute_vm
+        - block_volume
+      oss_required:
+        - dify
+        - postgres
+        - redis
+      oci_optional:
+        - bastion
+        - load_balancer
+        - vault
+        - logging
+        - monitoring
+        - waf
+
+  - rank: 2
+    id: n8n-oci
+    source: n8n-io/n8n
+    token_potential: 10
+    deploy_effort: 5
+    one_click_pattern: vm-plus-compose
+    bom:
+      oci_required:
+        - vcn
+        - public_subnet
+        - compute_vm
+        - block_volume
+      oss_required:
+        - n8n
+        - postgres
+      oci_optional:
+        - bastion
+        - load_balancer
+        - vault
+        - object_storage
+
+  - rank: 3
+    id: onyx-oci
+    source: onyx-dot-app/onyx
+    token_potential: 9
+    deploy_effort: 7
+    one_click_pattern: vm-plus-compose
+    bom:
+      oci_required:
+        - vcn
+        - compute_vm
+        - block_volume
+      oss_required:
+        - onyx
+        - postgres
+        - redis
+      oci_optional:
+        - bastion
+        - load_balancer
+        - vault
+        - object_storage
+
+  - rank: 4
+    id: ragflow-oci
+    source: infiniflow/ragflow
+    token_potential: 9
+    deploy_effort: 7
+    one_click_pattern: vm-plus-compose
+    bom:
+      oci_required:
+        - vcn
+        - compute_vm
+        - block_volume
+      oss_required:
+        - ragflow
+        - relational_db
+        - vector_backend
+      oci_optional:
+        - bastion
+        - load_balancer
+        - vault
+        - object_storage
+
+  - rank: 5
+    id: chatwoot-ai-oci
+    source: chatwoot/chatwoot
+    token_potential: 9
+    deploy_effort: 7
+    one_click_pattern: vm-plus-compose
+    bom:
+      oci_required:
+        - vcn
+        - compute_vm
+        - block_volume
+      oss_required:
+        - chatwoot
+        - postgres
+        - redis
+      oci_optional:
+        - load_balancer
+        - vault
+        - object_storage
+
+  - rank: 6
+    id: openwebui-oci
+    source: open-webui/open-webui
+    token_potential: 8
+    deploy_effort: 4
+    one_click_pattern: single-vm
+    bom:
+      oci_required:
+        - vcn
+        - compute_vm
+        - block_volume
+      oss_required:
+        - open_webui
+      oci_optional:
+        - bastion
+        - load_balancer
+        - vault
+        - iam_dynamic_group_and_policy
+
+  - rank: 7
+    id: openhands-oci
+    source: OpenHands/OpenHands
+    token_potential: 9
+    deploy_effort: 8
+    one_click_pattern: vm-plus-compose
+    bom:
+      oci_required:
+        - vcn
+        - compute_vm_high_memory
+        - block_volume
+      oss_required:
+        - openhands
+        - runtime_sandbox
+      oci_optional:
+        - bastion
+        - vault
+        - logging
+        - monitoring
+
+  - rank: 8
+    id: anything-llm-oci
+    source: Mintplex-Labs/anything-llm
+    token_potential: 8
+    deploy_effort: 5
+    one_click_pattern: single-vm
+    bom:
+      oci_required:
+        - vcn
+        - compute_vm
+        - block_volume
+      oss_required:
+        - anything_llm
+      oci_optional:
+        - bastion
+        - load_balancer
+        - vault
+        - object_storage
+
+  - rank: 9
+    id: langgraph-platform-oci
+    source: langchain-ai/langgraph
+    token_potential: 8
+    deploy_effort: 8
+    one_click_pattern: vm-plus-services
+    bom:
+      oci_required:
+        - vcn
+        - compute_vm
+        - state_store
+      oss_required:
+        - langgraph_runtime
+        - api_service
+      oci_optional:
+        - load_balancer
+        - vault
+        - logging
+        - monitoring
+
+  - rank: 10
+    id: letta-oci
+    source: letta-ai/letta
+    token_potential: 8
+    deploy_effort: 8
+    one_click_pattern: vm-plus-services
+    bom:
+      oci_required:
+        - vcn
+        - compute_vm
+        - memory_store
+      oss_required:
+        - letta
+      oci_optional:
+        - bastion
+        - vault
+        - logging
+        - monitoring
+
+  - rank: 11
+    id: langfuse-oci
+    source: langfuse/langfuse
+    token_potential: 7
+    deploy_effort: 7
+    one_click_pattern: vm-plus-services
+    bom:
+      oci_required:
+        - vcn
+        - compute_vm
+        - relational_db
+      oss_required:
+        - langfuse
+      oci_optional:
+        - clickhouse_profile
+        - object_storage
+        - vault
+        - monitoring
+
+  - rank: 12
+    id: litellm-gateway-oci
+    source: BerriAI/litellm
+    token_potential: 6
+    deploy_effort: 5
+    one_click_pattern: gateway-vm
+    bom:
+      oci_required:
+        - vcn
+        - compute_vm
+      oss_required:
+        - litellm_proxy
+      oci_optional:
+        - load_balancer
+        - vault
+        - logging
+        - monitoring
+
+watchlist:
+  - id: librechat-oci
+    source: LibreChatAI/LibreChat
+  - id: lobechat-oci
+    source: lobehub/lobe-chat
+  - id: haystack-platform-oci
+    source: deepset-ai/haystack
+  - id: vllm-serving-oci
+    source: vllm-project/vllm

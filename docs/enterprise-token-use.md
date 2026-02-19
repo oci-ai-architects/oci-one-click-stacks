@@ -48,3 +48,7 @@ For each stack candidate, ship:
 - Terraform stack with validated defaults.
 - Release ZIP artifact for deploy button.
 - `quick` (public) and `secure` (private + Bastion) modes.
+
+Detailed ranked BoM is published in:
+- `docs/enterprise-token-bom.md`
+- `catalog/enterprise-token-bom.yaml`
