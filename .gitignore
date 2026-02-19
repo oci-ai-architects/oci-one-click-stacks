@@ -4,3 +4,4 @@
 crash.log
 *.tfplan
 .DS_Store
+dist/
