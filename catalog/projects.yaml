@@ -1,0 +1,56 @@
+projects:
+  - id: hello-oci-vm
+    source: internal
+    type: terraform-stack
+    complexity: very-low
+    value: fast-adoption
+    status: shipped
+
+  - id: uptime-kuma-oci
+    source: louislam/uptime-kuma
+    type: oss-fork-or-wrapper
+    complexity: low
+    value: broad
+    status: planned
+
+  - id: umami-oci
+    source: umami-software/umami
+    type: oss-fork-or-wrapper
+    complexity: low
+    value: broad
+    status: planned
+
+  - id: n8n-oci
+    source: n8n-io/n8n
+    type: oss-fork-or-wrapper
+    complexity: medium
+    value: very-high
+    status: planned
+
+  - id: openwebui-oci
+    source: open-webui/open-webui + dariomanda/oci_open-webui
+    type: fork-and-refactor
+    complexity: medium
+    value: very-high
+    status: in-discovery
+
+  - id: flowise-oci
+    source: FlowiseAI/Flowise
+    type: oss-fork-or-wrapper
+    complexity: medium
+    value: high
+    status: planned
+
+  - id: langfuse-oci
+    source: langfuse/langfuse
+    type: oss-fork-or-wrapper
+    complexity: medium-high
+    value: high
+    status: planned
+
+  - id: openclaw-oci
+    source: oci-ai-architects/openclaw-on-oci
+    type: integration
+    complexity: high
+    value: strategic
+    status: planned

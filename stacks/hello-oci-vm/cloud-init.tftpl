@@ -1,0 +1,38 @@
+#cloud-config
+package_update: true
+package_upgrade: false
+packages:
+  - nginx
+
+write_files:
+  - path: /var/www/html/index.html
+    permissions: '0644'
+    owner: root:root
+    content: |
+      <!doctype html>
+      <html>
+      <head>
+        <meta charset="utf-8" />
+        <title>Hello OCI</title>
+        <style>
+          body { font-family: Arial, sans-serif; margin: 40px; color: #1f2937; }
+          .badge { display: inline-block; padding: 6px 10px; background: #e6f0ff; border-radius: 6px; }
+          code { background: #f4f4f5; padding: 2px 6px; border-radius: 4px; }
+        </style>
+      </head>
+      <body>
+        <h1>Hello from OCI One-Click Stack</h1>
+        <p class="badge">${stack_name}</p>
+        <p>This VM was provisioned by Terraform via OCI Resource Manager.</p>
+        <ul>
+          <li>Region: ${region}</li>
+          <li>Shape: ${shape}</li>
+          <li>Hostname: <code>$(hostname -f)</code></li>
+          <li>Timestamp: <code>$(date -u +"%Y-%m-%dT%H:%M:%SZ")</code></li>
+        </ul>
+      </body>
+      </html>
+
+runcmd:
+  - systemctl enable nginx
+  - systemctl restart nginx
