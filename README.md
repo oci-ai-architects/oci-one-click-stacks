@@ -1,5 +1,9 @@
 # OCI One-Click Stacks
 
+License: Apache-2.0. See LICENSE.
+
+Oracle and OCI are trademarks or registered trademarks of Oracle Corporation. This project is not affiliated with, endorsed by, or sponsored by Oracle Corporation. Other names are marks of their respective owners.
+
 A curated portfolio of `Deploy to Oracle Cloud` stacks built for fast time-to-value.
 
 Goal: start with ultra-simple stacks that deploy in minutes, then grow into higher-value AI/app platforms (including OpenClaw/OpenWebUI class deployments).
